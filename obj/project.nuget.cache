@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oaiUjAYAEq18IbXVooMGyL+BFByBczN/MS1JclPzG0NtCqCaF+CWhluSMPPoiVJRmXxDwiZS+HLymDliZ9lH7A==",
+  "dgSpecHash": "/7oQW4Ld2a79srZhw0XJqW2Yy/wPHZBERtkBeSQ4g8Eo4FPGI9DWrTV0c0IXyGSnEdjnZMfTCmJfYZF4MN99rQ==",
   "success": true,
-  "projectFilePath": "D:\\git\\PAK-www\\PAK-www\\PAK-www.csproj",
+  "projectFilePath": "D:\\git\\PAK-www\\PAK-www.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\drake\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.5\\microsoft.aspnetcore.mvc.razor.extensions.3.1.5.nupkg.sha512",
     "C:\\Users\\drake\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.5\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.5.nupkg.sha512",

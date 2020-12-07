@@ -661,11 +661,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\git\\PAK-www\\PAK-www\\PAK-www.csproj",
+      "projectUniqueName": "D:\\git\\PAK-www\\PAK-www.csproj",
       "projectName": "PAK-www",
-      "projectPath": "D:\\git\\PAK-www\\PAK-www\\PAK-www.csproj",
+      "projectPath": "D:\\git\\PAK-www\\PAK-www.csproj",
       "packagesPath": "C:\\Users\\drake\\.nuget\\packages\\",
-      "outputPath": "D:\\git\\PAK-www\\PAK-www\\obj\\",
+      "outputPath": "D:\\git\\PAK-www\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\drake\\AppData\\Roaming\\NuGet\\NuGet.Config",
