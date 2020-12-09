@@ -1,0 +1,12 @@
+﻿@using PAK_www.Models.Admin
+@model LoginForm
+
+@using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true);
+    @Html.LabelFor(m => m.Username)
+    @Html.TextBoxFor(m => m.Username)
+    @Html.LabelFor(m => m.Password)
+    @Html.TextBoxFor(m => m.Password)
+}
