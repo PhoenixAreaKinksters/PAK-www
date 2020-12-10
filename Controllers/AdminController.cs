@@ -34,7 +34,7 @@ namespace PAK_www.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> Login(LoginForm login)
+        public async Task<IActionResult> Login([FromBody] LoginForm login)
         {
             var user = login.ValidateCredentials();
             if ((user?.UserId ?? 0) > 0)
