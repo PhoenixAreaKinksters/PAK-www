@@ -17,10 +17,6 @@ namespace PAK_www.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            if (User?.Identity.IsAuthenticated ?? false)
-            {
-                return Panel();
-            }
             return Login();
         }
 
@@ -28,36 +24,47 @@ namespace PAK_www.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            if (User?.Identity.IsAuthenticated ?? false)
+            {
+                return RedirectToAction("Panel");
+            }
             return View();
         }
 
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(LoginForm login)
+        public async Task<IActionResult> Login(LoginForm login)
         {
             var user = login.ValidateCredentials();
             if ((user?.UserId ?? 0) > 0)
             {
                 var claims = new List<Claim>
-                    {
+                {
                       new Claim(ClaimTypes.Name, user.Username)
-                    };
+                };
 
                 var claimsIdentity = new ClaimsIdentity(
-                  claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var authProperties = new AuthenticationProperties();
                 authProperties.IsPersistent = true;
 
                 await HttpContext.SignInAsync(
-                  CookieAuthenticationDefaults.AuthenticationScheme,
-                  new ClaimsPrincipal(claimsIdentity),
-                  authProperties);
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
 
                 return Panel();
             }
             return Login();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Panel()
