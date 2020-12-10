@@ -23,7 +23,7 @@ namespace PAK_www
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
 
@@ -32,8 +32,7 @@ namespace PAK_www
               {
                   options.Cookie.Name = "PAK.Auth";
                   options.Cookie.HttpOnly = true;
-                  options.Cookie.SecurePolicy = env.IsDevelopment()
-                    ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
+                  options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                   options.Cookie.SameSite = SameSiteMode.Strict;
 
               });
