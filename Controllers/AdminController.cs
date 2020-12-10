@@ -53,7 +53,7 @@ namespace PAK_www.Controllers
             {
                 var claims = new List<Claim>
                 {
-                      new Claim(ClaimTypes.Name, user.Username)
+                    new Claim(ClaimTypes.Name, user.Username)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(
@@ -67,7 +67,7 @@ namespace PAK_www.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                return Panel();
+                return RedirectToAction("Panel");
             }
             return Login();
         }
