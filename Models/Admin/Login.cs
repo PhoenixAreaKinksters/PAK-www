@@ -27,7 +27,7 @@ namespace PAK_www.Models.Admin
             {
                 using (var cn = new MySqlConnection(configuration.GetConnectionString("PAK")))
                 {
-                    user = cn.QueryFirst<User>("spLoginUser", this);
+                    user = cn.QueryFirst<User>("spLoginUser", new { Username = Username, Password = Password });
                 }
             }
             catch
