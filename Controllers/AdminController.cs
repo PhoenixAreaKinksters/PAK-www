@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using PAK_www.Models.Admin;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,12 @@ namespace PAK_www.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        private IConfiguration configuration;
+        public AdminController(IConfiguration config)
+        {
+            configuration = config;
+        }
+
         [AllowAnonymous]
         public IActionResult Index()
         {
@@ -34,9 +41,14 @@ namespace PAK_www.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginForm login)
+        public async Task<IActionResult> Login([FromForm] LoginForm login)
         {
-            var user = login.ValidateCredentials();
+            var loginModel = new Login(configuration)
+            {
+                Username = login.Username,
+                Password = login.Password
+            };
+            var user = loginModel.ValidateCredentials();
             if ((user?.UserId ?? 0) > 0)
             {
                 var claims = new List<Claim>
