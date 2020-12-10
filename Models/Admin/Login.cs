@@ -32,7 +32,7 @@ namespace PAK_www.Models.Admin
             }
             catch
             {
-                throw;
+                
             }
             return user;
         }

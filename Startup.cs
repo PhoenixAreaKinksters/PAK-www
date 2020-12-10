@@ -34,7 +34,7 @@ namespace PAK_www
                   options.Cookie.HttpOnly = true;
                   options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                   options.Cookie.SameSite = SameSiteMode.Strict;
-
+                  options.LoginPath = "/Admin/Login";
               });
         }
 

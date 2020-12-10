@@ -24,7 +24,7 @@ namespace PAK_www.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            return Login();
+            return RedirectToAction("Login");
         }
 
         [AllowAnonymous]
