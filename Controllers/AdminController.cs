@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PAK_www.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class AdminController : Controller
     {
         private IConfiguration configuration;
