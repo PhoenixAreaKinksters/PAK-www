@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
-namespace PAK_www.Models.Admin
+namespace PAK_www.Models.Home
 {
     public class LoginForm
     {

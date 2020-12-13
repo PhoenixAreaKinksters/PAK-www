@@ -1,0 +1,13 @@
+﻿@using PAK_www.Models.Admin
+@model EventSearchForm
+
+@using (Html.BeginForm("Events", "Admin", FormMethod.Get))
+{
+    @Html.LabelFor(m => m.EventTitle)
+    @Html.TextBoxFor(m => m.EventTitle)
+    @Html.LabelFor(m => m.FromDate)
+    @Html.TextBoxFor(m => m.FromDate)
+    @Html.LabelFor(m => m.ToDate)
+    @Html.TextBoxFor(m => m.ToDate)
+    <button type="submit">Search</button>
+}

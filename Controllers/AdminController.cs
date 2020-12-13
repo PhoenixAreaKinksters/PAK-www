@@ -15,73 +15,48 @@ namespace PAK_www.Controllers
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class AdminController : Controller
     {
-        private IConfiguration configuration;
-        public AdminController(IConfiguration config)
+        private IConfiguration _configuration;
+        public AdminController(IConfiguration configuration)
         {
-            configuration = config;
+            _configuration = configuration;
         }
 
-        [AllowAnonymous]
         public IActionResult Index()
         {
-            return RedirectToAction("Login");
+            return View();
         }
 
-        [AllowAnonymous]
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Events()
         {
-            if (User?.Identity.IsAuthenticated ?? false)
-            {
-                return RedirectToAction("Panel");
-            }
             return View();
         }
 
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> Login([FromForm] LoginForm login)
+        public IActionResult Events([FromForm] EventSearchForm form)
         {
-            var loginModel = new Login(configuration)
+            var model = new EventSearch(_configuration)
             {
-                Username = login.Username,
-                Password = login.Password
+                Search = true,
+                Form = form
             };
-            var user = loginModel.ValidateCredentials();
-            if ((user?.UserId ?? 0) > 0)
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditEvent(int id = 0)
+        {
+            //Update/Insert Failed
+            if (id < 0)
             {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.Username)
-                };
-
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                var authProperties = new AuthenticationProperties();
-                authProperties.IsPersistent = true;
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                return RedirectToAction("Panel");
+                return Content("Something went wrong");
             }
-            return Login();
-        }
 
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
-        }
-
-        public IActionResult Panel()
-        {
-            return View();
+            var model = new EditEvent(_configuration)
+            {
+                EventId = id
+            };
+            return View(model);
         }
     }
 }

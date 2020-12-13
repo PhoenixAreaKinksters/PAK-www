@@ -7,27 +7,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PAK_www.Models.Admin
+namespace PAK_www.Models.Home
 {
     public class Login
     {
-        protected IConfiguration configuration;
-        public Login(IConfiguration config)
+        protected IConfiguration _configuration;
+        public Login(IConfiguration configuration)
         {
-            configuration = config;
+            _configuration = configuration;
         }
 
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public LoginForm Form { get; set; }
 
         public User ValidateCredentials()
         {
             var user = new User();
             try
             {
-                using (var cn = new MySqlConnection(configuration.GetConnectionString("PAK")))
+                using (var cn = new MySqlConnection(_configuration.GetConnectionString("PAK")))
                 {
-                    user = cn.QueryFirst<User>("spLoginUser", new { Username, Password }, commandType: System.Data.CommandType.StoredProcedure);
+                    user = cn.QueryFirst<User>("spLoginUser", Form, commandType: System.Data.CommandType.StoredProcedure);
                 }
             }
             catch
