@@ -38,6 +38,10 @@ namespace PAK_www.Models.Admin
                 }
                 return _currentEvent;
             }
+            set
+            {
+                _currentEvent = value;
+            }
         }
 
         public int SaveEvent()
@@ -60,7 +64,7 @@ namespace PAK_www.Models.Admin
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 CurrentEvent.EventId = 0;
             }

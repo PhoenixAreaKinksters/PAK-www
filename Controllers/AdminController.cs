@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using PAK_www.Models.Admin;
+using PAK_www.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +28,14 @@ namespace PAK_www.Controllers
         }
 
         [HttpGet]
+        //[AllowAnonymous]
         public IActionResult Events()
         {
             return View();
         }
 
         [HttpPost]
+        //[AllowAnonymous]
         public IActionResult Events([FromForm] EventSearchForm form)
         {
             var model = new EventSearch(_configuration)
@@ -57,6 +60,17 @@ namespace PAK_www.Controllers
                 EventId = id
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditEvent(Event currentEvent)
+        {
+            var model = new EditEvent(_configuration)
+            {
+                CurrentEvent = currentEvent
+            };
+            var eventId = model.SaveEvent();
+            return EditEvent(eventId);
         }
     }
 }

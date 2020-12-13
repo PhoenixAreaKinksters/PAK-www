@@ -3,14 +3,14 @@
 @await Html.PartialAsync("Partial/EventSearchForm.cshtml") 
 <h1>Events</h1>
 <br />
-@Html.ActionLink("Add Event", "AddEvent", "Admin")
+@Html.ActionLink("Add Event", "EditEvent", "Admin")
 <table>
     <tr>
         <th>Title</th>
         <th>Date</th>
         <th>Actions</th>
     </tr>
-    @if ((Model.Events?.Count() ?? 0) > 0)
+    @if ((Model?.Events?.Count() ?? 0) > 0)
     {
         @foreach(var e in Model.Events)
         {
