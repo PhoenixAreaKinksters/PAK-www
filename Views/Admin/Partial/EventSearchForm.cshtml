@@ -1,7 +1,7 @@
 ﻿@using PAK_www.Models.Admin
 @model EventSearchForm
 
-@using (Html.BeginForm("Events", "Admin", FormMethod.Get))
+@using (Html.BeginForm("Events", "Admin", FormMethod.Post))
 {
     @Html.LabelFor(m => m.EventTitle)
     @Html.TextBoxFor(m => m.EventTitle)

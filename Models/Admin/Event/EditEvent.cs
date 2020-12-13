@@ -70,5 +70,25 @@ namespace PAK_www.Models.Admin
             }
             return CurrentEvent.EventId;
         }
+
+        public bool DeleteEvent()
+        {
+            var success = false;
+            if (EventId > 0)
+            {
+                try
+                {
+                    using (var cn = new MySqlConnection(_configuration.GetConnectionString("PAK")))
+                    {
+                        success = (cn.Execute("spDeleteEvent", new { ID = EventId }, commandType: System.Data.CommandType.StoredProcedure) == 1);
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+            return success;
+        }
     }
 }

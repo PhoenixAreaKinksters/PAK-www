@@ -72,5 +72,15 @@ namespace PAK_www.Controllers
             var eventId = model.SaveEvent();
             return EditEvent(eventId);
         }
+
+        public IActionResult DeleteEvent(int Id)
+        {
+            var model = new EditEvent(_configuration)
+            {
+                EventId = Id
+            };
+            model.DeleteEvent();
+            return RedirectToAction("Events");
+        }
     }
 }
