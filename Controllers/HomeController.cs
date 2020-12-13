@@ -79,7 +79,6 @@ namespace PAK_www.Controllers
             return Login();
         }
 
-        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(
