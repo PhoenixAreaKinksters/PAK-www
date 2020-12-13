@@ -47,17 +47,17 @@ namespace PAK_www.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditEvent(int id = 0)
+        public IActionResult EditEvent(int Id = 0)
         {
             //Update/Insert Failed
-            if (id < 0)
+            if (Id < 0)
             {
                 return Content("Something went wrong");
             }
 
             var model = new EditEvent(_configuration)
             {
-                EventId = id
+                EventId = Id
             };
             return View(model);
         }
