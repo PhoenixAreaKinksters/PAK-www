@@ -28,7 +28,7 @@ namespace PAK_www.Models.Admin
                     {
                         using (var cn = new MySqlConnection(_configuration.GetConnectionString("PAK")))
                         {
-                            _currentEvent = cn.QueryFirst<Event>("spSearchEvents", new { ID = EventId, FromDate = (DateTime?)null, ToDate = (DateTime?)null, Title = (string)null }, commandType: System.Data.CommandType.StoredProcedure);
+                            _currentEvent = cn.QueryFirst<Event>("spSearchEvents", new { ID = EventId, FromDate = (DateTime?)null, ToDate = (DateTime?)null, EventTitle = (string)null }, commandType: System.Data.CommandType.StoredProcedure);
                         }
                     }
                     catch
@@ -64,7 +64,7 @@ namespace PAK_www.Models.Admin
                     }
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 CurrentEvent.EventId = 0;
             }
