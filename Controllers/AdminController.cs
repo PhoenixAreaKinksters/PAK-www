@@ -42,7 +42,7 @@ namespace PAK_www.Controllers
                 Search = true,
                 Form = form
             };
-            return PartialView(model);
+            return PartialView("Partial/EventGrid",model);
         }
 
         [HttpGet]
