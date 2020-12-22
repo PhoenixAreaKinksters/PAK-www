@@ -20,7 +20,10 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "EditEvent", "Admin", new { Id = e.EventId })
-                    @Html.ActionLink("Delete", "DeleteEvent", "Admin", new { Id = e.EventId }, new { onclick = "return confirm('Are you sure you wish to delete this event?');" })
+                    <a asp-action="DeleteEvent" asp-controller="Admin" asp-route-Id="@e.EventId"
+                       onclick = "return confirm('Are you sure you wish to delete this event?');"
+                       data-ajax="true"
+                       data-ajax-success="$('#eventSearchForm').Submit();"/>
                 </td>
             </tr>
         }

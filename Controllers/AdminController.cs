@@ -74,12 +74,19 @@ namespace PAK_www.Controllers
 
         public IActionResult DeleteEvent(int Id)
         {
-            var model = new EditEvent(_configuration)
+            try
             {
-                EventId = Id
-            };
-            model.DeleteEvent();
-            return RedirectToAction("Events");
+                var model = new EditEvent(_configuration)
+                {
+                    EventId = Id
+                };
+                model.DeleteEvent();
+                return Content("success");
+            }
+            catch
+            {
+                return Content("failed");
+            }
         }
     }
 }
