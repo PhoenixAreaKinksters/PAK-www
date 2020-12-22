@@ -23,7 +23,9 @@
                     <a asp-action="DeleteEvent" asp-controller="Admin" asp-route-Id="@e.EventId"
                        onclick = "return confirm('Are you sure you wish to delete this event?');"
                        data-ajax="true"
-                       data-ajax-success="$('#eventSearchForm').Submit();"/>
+                       data-ajax-success="$('#eventSearchForm').Submit();">
+                        Delete
+                    </a>
                 </td>
             </tr>
         }
