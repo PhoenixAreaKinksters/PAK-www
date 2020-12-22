@@ -35,8 +35,7 @@ namespace PAK_www.Controllers
         }
 
         [HttpPost]
-        //[AllowAnonymous]
-        public IActionResult Events([FromForm] EventSearchForm form)
+        public IActionResult EventGrid([FromForm] EventSearchForm form)
         {
             var model = new EventSearch(_configuration)
             {

@@ -4,28 +4,6 @@
 <h1>Events</h1>
 @await Html.PartialAsync("Partial/EventSearchForm.cshtml", Model?.Form)
 @Html.ActionLink("Add Event", "EditEvent", "Admin")
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Date</th>
-        <th>Actions</th>
-    </tr>
-    @if ((Model?.Events?.Count() ?? 0) > 0)
-    {
-        @foreach (var e in Model.Events)
-        {
-            <tr>
-                <td>
-                    @e.Title
-                </td>
-                <td>
-                    @e.Date.ToString("yyyy-MM-dd")
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditEvent", "Admin", new { Id = e.EventId })
-                    @Html.ActionLink("Delete", "DeleteEvent", "Admin", new { Id = e.EventId }, new { onclick = "return confirm('Are you sure you wish to delete this event?');" })
-                </td>
-            </tr>
-        }
-    }
-</table>
+<div id="eventGrid">
+    @await Html.PartialAsync("Partial/EventGrid", Model)
+</div>

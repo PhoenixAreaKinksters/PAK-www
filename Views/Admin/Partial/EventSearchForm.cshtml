@@ -1,8 +1,10 @@
 ﻿@using PAK_www.Models.Admin
 @model EventSearchForm
 
-@using (Html.BeginForm("Events", "Admin", FormMethod.Post))
-{
+<form asp-action="EventGrid" asp-controller="Admin" 
+      data-ajax-method="POST" 
+      data-ajax-mode="replace" 
+      data-ajax-update="#eventGrid">
     @Html.LabelFor(m => m.EventTitle)
     @Html.TextBoxFor(m => m.EventTitle)
     @Html.LabelFor(m => m.FromDate)
@@ -10,4 +12,4 @@
     @Html.LabelFor(m => m.ToDate)
     @Html.TextBoxFor(m => m.ToDate)
     <button type="submit">Search</button>
-}
+</form>

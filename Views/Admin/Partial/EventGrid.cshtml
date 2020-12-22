@@ -1,0 +1,28 @@
+﻿@using PAK_www.Models.Admin
+@model EventSearch
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    @if ((Model?.Events?.Count() ?? 0) > 0)
+    {
+        @foreach (var e in Model.Events)
+        {
+            <tr>
+                <td>
+                    @e.Title
+                </td>
+                <td>
+                    @e.Date.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditEvent", "Admin", new { Id = e.EventId })
+                    @Html.ActionLink("Delete", "DeleteEvent", "Admin", new { Id = e.EventId }, new { onclick = "return confirm('Are you sure you wish to delete this event?');" })
+                </td>
+            </tr>
+        }
+    }
+</table>
