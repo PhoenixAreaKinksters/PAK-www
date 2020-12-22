@@ -42,7 +42,7 @@ namespace PAK_www.Controllers
                 Search = true,
                 Form = form
             };
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpGet]
