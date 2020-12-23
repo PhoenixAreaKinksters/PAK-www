@@ -1,0 +1,16 @@
+﻿@using PAK_www.Models.Admin
+@model PersonSearchForm
+
+<form asp-action="PersonGrid" asp-controller="Admin"
+      id="personSearchForm"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-mode="replace"
+      data-ajax-update="#personGrid">
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    @Html.HiddenFor(m => m.ShowAll)
+    <button type="submit">Search</button>
+</form>

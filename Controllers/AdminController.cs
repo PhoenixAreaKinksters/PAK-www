@@ -27,8 +27,9 @@ namespace PAK_www.Controllers
             return View();
         }
 
+        #region Events
+
         [HttpGet]
-        //[AllowAnonymous]
         public IActionResult Events()
         {
             return View();
@@ -88,5 +89,70 @@ namespace PAK_www.Controllers
                 return Content("failed");
             }
         }
+
+        #endregion
+        #region People
+
+        [HttpGet]
+        public IActionResult People()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PersonGrid([FromForm] PersonSearchForm form)
+        {
+            var model = new PersonSearch(_configuration)
+            {
+                Search = true,
+                Form = form
+            };
+            return PartialView("Partial/PersonGrid", model);
+        }
+
+        [HttpGet]
+        public IActionResult EditPerson(int Id = 0)
+        {
+            //Update/Insert Failed
+            if (Id < 0)
+            {
+                return Content("Something went wrong");
+            }
+
+            var model = new EditPerson(_configuration)
+            {
+                PersonId = Id
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditPerson(Person currentPerson)
+        {
+            var model = new EditPerson(_configuration)
+            {
+                CurrentPerson = currentPerson
+            };
+            var PersonId = model.SavePerson();
+            return EditPerson(PersonId);
+        }
+
+        public IActionResult DeletePerson(int Id)
+        {
+            try
+            {
+                var model = new EditPerson(_configuration)
+                {
+                    PersonId = Id
+                };
+                model.DeletePerson();
+                return Content("success");
+            }
+            catch
+            {
+                return Content("failed");
+            }
+        }
+        #endregion
     }
 }

@@ -1,0 +1,9 @@
+﻿@using PAK_www.Models.Admin
+@model PersonSearch
+
+<h1>People</h1>
+@await Html.PartialAsync("Partial/PersonSearchForm.cshtml", Model?.Form)
+@Html.ActionLink("Add Person", "EditPerson", "Admin")
+<div id="personGrid">
+    @await Html.PartialAsync("Partial/PersonGrid", Model)
+</div>
