@@ -1,6 +1,22 @@
 ﻿@using PAK_www.Models.Admin
 @model PersonSearchForm
 
+@{ 
+    var privacyModeList = new List<SelectListItem>()
+    {
+        new SelectListItem()
+        {
+            Value = "0",
+            Text = "Only show searched"
+        },
+        new SelectListItem()
+        {
+            Value = "1",
+            Text = "Show all"
+        }
+    };
+}
+
 <form asp-action="PersonGrid" asp-controller="Admin"
       id="personSearchForm"
       data-ajax="true"
@@ -11,6 +27,6 @@
     @Html.TextBoxFor(m => m.Name)
     @Html.LabelFor(m => m.Email)
     @Html.TextBoxFor(m => m.Email)
-    @Html.HiddenFor(m => m.ShowAll)
+    @Html.DropDownListFor(m => m.ShowAll, privacyModeList)
     <button type="submit">Search</button>
 </form>
