@@ -28,7 +28,7 @@ namespace PAK_www.Models.Admin
                     {
                         using (var cn = new MySqlConnection(_configuration.GetConnectionString("PAK")))
                         {
-                            _currentPerson = cn.QueryFirst<Person>("spSearchPeople", new { ID = PersonId, Name = (string)null, Email = (string)null}, commandType: System.Data.CommandType.StoredProcedure);
+                            _currentPerson = cn.QueryFirst<Person>("spSearchPeople", new { ID = PersonId, Name = (string)null, Email = (string)null, ShowAll = 0}, commandType: System.Data.CommandType.StoredProcedure);
                         }
                     }
                     catch

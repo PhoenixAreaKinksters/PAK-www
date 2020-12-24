@@ -65,6 +65,7 @@ namespace PAK_www.Controllers
         [HttpPost]
         public IActionResult EditEvent(Event currentEvent)
         {
+            ModelState.Clear();
             var model = new EditEvent(_configuration)
             {
                 CurrentEvent = currentEvent
@@ -129,6 +130,7 @@ namespace PAK_www.Controllers
         [HttpPost]
         public IActionResult EditPerson(Person currentPerson)
         {
+            ModelState.Clear();
             var model = new EditPerson(_configuration)
             {
                 CurrentPerson = currentPerson

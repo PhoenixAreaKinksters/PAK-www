@@ -7,7 +7,7 @@
     @Html.LabelFor(m => m.Title)
     @Html.TextBoxFor(m => m.Title)
     @Html.LabelFor(m => m.Date)
-    @Html.TextBoxFor(m => m.Date)
+    @Html.TextBoxFor(m => m.Date, new { type = "datetime-local" })
     @Html.LabelFor(m => m.Link)
     @Html.TextBoxFor(m => m.Link)
     @Html.LabelFor(m => m.Description)

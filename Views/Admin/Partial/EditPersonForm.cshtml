@@ -11,7 +11,7 @@
     @Html.LabelFor(m => m.Email)
     @Html.TextBoxFor(m => m.Email)
     @Html.LabelFor(m => m.Birthday)
-    @Html.TextBoxFor(m => m.Birthday)
+    @Html.TextBoxFor(m => m.Birthday, "{0:yyyy-MM-dd}", new { type = "date" })
 
     <button type="submit">@(Model?.PersonId > 0 ? "Update" : "Create")</button>
 }
