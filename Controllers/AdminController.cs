@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using ExtensionMethods;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -59,7 +60,7 @@ namespace PAK_www.Controllers
             {
                 EventId = Id
             };
-            return View(model);
+            return PartialView("Partial/EditEvent", model);
         }
 
         [HttpPost]
@@ -124,7 +125,7 @@ namespace PAK_www.Controllers
             {
                 PersonId = Id
             };
-            return View(model);
+            return PartialView("Partial/EditPerson", model);
         }
 
         [HttpPost]

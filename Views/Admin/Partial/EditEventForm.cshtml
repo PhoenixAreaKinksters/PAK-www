@@ -1,16 +1,12 @@
 ﻿@using PAK_www.Models.Shared
 @model Event
 
-@using (Html.BeginForm("EditEvent", "Admin", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.EventId)
-    @Html.LabelFor(m => m.Title)
-    @Html.TextBoxFor(m => m.Title)
-    @Html.LabelFor(m => m.Date)
-    @Html.TextBoxFor(m => m.Date, new { type = "datetime-local" })
-    @Html.LabelFor(m => m.Link)
-    @Html.TextBoxFor(m => m.Link)
-    @Html.LabelFor(m => m.Description)
-    @Html.TextAreaFor(m => m.Description)
-    <button type="submit">@(Model?.EventId > 0 ? "Update" : "Create")</button>
-}
+@Html.HiddenFor(m => m.EventId)
+@Html.LabelFor(m => m.Title)
+@Html.TextBoxFor(m => m.Title)
+@Html.LabelFor(m => m.Date)
+@Html.TextBoxFor(m => m.Date, new { type = "datetime-local" })
+@Html.LabelFor(m => m.Link)
+@Html.TextBoxFor(m => m.Link)
+@Html.LabelFor(m => m.Description)
+@Html.TextAreaFor(m => m.Description)

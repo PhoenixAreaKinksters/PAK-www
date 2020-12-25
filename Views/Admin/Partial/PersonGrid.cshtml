@@ -40,7 +40,13 @@
                     @(e.VettedDate.HasValue ? "Yes" : "No")
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditPerson", "Admin", new { Id = e.PersonId })
+                    <a asp-action="EditPerson" asp-controller="Admin" asp-route-Id="@e.PersonId"
+                      data-ajax="true"
+                      data-ajax-method="GET"
+                      data-ajax-update="#editPersonModal"
+                      data-ajax-success="$('#editPersonModal').appendTo('body').html(data).modal('show');">
+                        Edit
+                    </a>
                     <a asp-action="DeletePerson" asp-controller="Admin" asp-route-Id="@e.PersonId"
                        onclick = "return confirm('Are you sure you wish to delete this person?');"
                        data-ajax="true"

@@ -3,7 +3,15 @@
 
 <h1>Events</h1>
 @await Html.PartialAsync("Partial/EventSearchForm.cshtml", Model?.Form)
-@Html.ActionLink("Add Event", "EditEvent", "Admin")
+<a asp-action="EditEvent" asp-controller="Admin"
+   data-ajax="true"
+   data-ajax-method="GET"
+   data-ajax-mode="replace"
+   data-ajax-update="#editEventModal"
+   data-ajax-success="$('#editEventModal').appendTo('body').html(data).modal('show');">
+    Add Event
+</a>
 <div id="eventGrid">
     @await Html.PartialAsync("Partial/EventGrid", Model)
 </div>
+<div id="editEventModal" class="modal" tabindex="-1" aria-labelledby="editEvent" aria-hidden="true"></div>

@@ -3,7 +3,15 @@
 
 <h1>People</h1>
 @await Html.PartialAsync("Partial/PersonSearchForm.cshtml", Model?.Form)
-@Html.ActionLink("Add Person", "EditPerson", "Admin")
+<a asp-action="EditPerson" asp-controller="Admin"
+   data-ajax="true"
+   data-ajax-method="GET"
+   data-ajax-mode="replace"
+   data-ajax-update="#editPersonModal"
+   data-ajax-success="$('#editPersonModal').appendTo('body').html(data).modal('show');">
+    Add Person
+</a>
 <div id="personGrid">
     @await Html.PartialAsync("Partial/PersonGrid", Model)
 </div>
+<div id="editPersonModal" class="modal" tabindex="-1" aria-labelledby="editPerson" aria-hidden="true"></div>
