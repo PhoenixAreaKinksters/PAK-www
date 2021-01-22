@@ -157,5 +157,13 @@ namespace PAK_www.Controllers
             }
         }
         #endregion
+
+        #region Attendances
+        public IActionResult Attendance()
+        {
+            var model = new AttendanceSearchForm(_configuration);
+            return View(model);
+        }
+        #endregion
     }
 }

@@ -1,0 +1,22 @@
+﻿@using PAK_www.Models.Admin
+@model AttendanceSearchForm
+
+@{ 
+    var eventOptions = Model.Events.OrderBy(e => e.Date).Select(e => new SelectListItem() { Text = e.Title, Value = e.EventId.ToString() });
+    var personOptions = Model.People.OrderBy(e => e.SceneName).Select(e => new SelectListItem() { Text = e.SceneName, Value = e.PersonId.ToString() });
+}
+
+<form asp-action="AttendanceGrid" asp-controller="Admin"
+      id="attendanceSearchForm"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-mode="replace"
+      data-ajax-update="#attendanceGrid">
+    @Html.LabelFor(m => m.EventId)
+    @Html.DropDownListFor(m => m.EventId, eventOptions, "Event", new { @class = "makeSelect2" })
+    @Html.LabelFor(m => m.PersonId)
+    @Html.DropDownListFor(m => m.PersonId, personOptions, "Person", new { @class = "makeSelect2" })
+    <button type="submit">Search</button>
+</form>
+
+<script src="~/js/AttendanceSearchForm.js" asp-append-version="true"></script>

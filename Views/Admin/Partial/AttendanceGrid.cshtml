@@ -1,0 +1,56 @@
+﻿@using PAK_www.Models.Admin
+@model PersonSearch
+
+<table>
+    <tr>
+        <th>Scene Name</th>
+        <th>Event</th>
+    </tr>
+    @if ((Model?.People?.Count() ?? 0) > 0)
+    {
+        @foreach (var e in Model.People)
+        {
+            <tr>
+                <td>
+                    @e.SceneName
+                </td>
+                <td>
+                    <details>
+                        <summary>View Legal Name</summary>
+                        @e.LegalName
+                    </details>
+                </td>
+                <td>
+                    <details>
+                        <summary>View Email</summary>
+                        @e.Email
+                    </details>
+                </td>
+                <td>
+                    <details>
+                        <summary>View Birthday</summary>
+                        @e.Birthday.ToString("yyyy-MM-dd")
+                    </details>
+                </td>
+                <td>
+                    @(e.VettedDate.HasValue ? "Yes" : "No")
+                </td>
+                <td>
+                    <a asp-action="EditPerson" asp-controller="Admin" asp-route-Id="@e.PersonId"
+                      data-ajax="true"
+                      data-ajax-method="GET"
+                      data-ajax-update="#editPersonModal"
+                      data-ajax-success="$('#editPersonModal').appendTo('body').html(data).modal('show');">
+                        Edit
+                    </a>
+                    <a asp-action="DeletePerson" asp-controller="Admin" asp-route-Id="@e.PersonId"
+                       onclick = "return confirm('Are you sure you wish to delete this person?');"
+                       data-ajax="true"
+                       data-ajax-success="$('#personSearchForm').submit();">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    }
+</table>
