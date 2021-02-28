@@ -1,0 +1,22 @@
+﻿@using PAK_www.Models.Admin
+@model EditPersonNotes
+
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Person Notes</h5>
+        </div>
+        <form asp-action="EditPersonNotes" asp-controller="Admin"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-update="#personNotesModal">
+            <div class="modal-body">
+                @await Html.PartialAsync("Partial/EditPersonNotesForm", new EditPersonNotesForm { PersonId = Model.PersonId, Notes = Model.Notes})
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">@(string.IsNullOrEmpty(Model.Notes) ? "Create" : "Update")</button>
+                <button type="button" class="btn btn-secondary" onclick="$('#personNotesModal').modal('hide');">Close</button>
+            </div>
+        </form>
+    </div>
+</div>

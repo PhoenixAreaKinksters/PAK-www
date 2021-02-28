@@ -40,15 +40,22 @@
                     @(e.VettedDate.HasValue ? "Yes" : "No")
                 </td>
                 <td>
+                    <a asp-action="PersonNotes" asp-controller="Admin" asp-route-Id="@e.PersonId"
+                       data-ajax="true"
+                       data-ajax-method="GET"
+                       data-ajax-update="#personNotesModal"
+                       data-ajax-success="$('#personNotesModal').appendTo('body').html(data).modal('show');">
+                        Notes
+                    </a>
                     <a asp-action="EditPerson" asp-controller="Admin" asp-route-Id="@e.PersonId"
-                      data-ajax="true"
-                      data-ajax-method="GET"
-                      data-ajax-update="#editPersonModal"
-                      data-ajax-success="$('#editPersonModal').appendTo('body').html(data).modal('show');">
+                       data-ajax="true"
+                       data-ajax-method="GET"
+                       data-ajax-update="#editPersonModal"
+                       data-ajax-success="$('#editPersonModal').appendTo('body').html(data).modal('show');">
                         Edit
                     </a>
                     <a asp-action="DeletePerson" asp-controller="Admin" asp-route-Id="@e.PersonId"
-                       onclick = "return confirm('Are you sure you wish to delete this person?');"
+                       onclick="return confirm('Are you sure you wish to delete this person?');"
                        data-ajax="true"
                        data-ajax-success="$('#personSearchForm').submit();">
                         Delete

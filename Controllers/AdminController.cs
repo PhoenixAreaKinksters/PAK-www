@@ -156,6 +156,27 @@ namespace PAK_www.Controllers
                 return Content("failed");
             }
         }
+
+        public IActionResult PersonNotes(int id)
+        {
+            var model = new EditPersonNotes(_configuration)
+            {
+                PersonId = id
+            };
+            return PartialView("Partial/PersonNotes", model);
+        }
+
+        [HttpPost]
+        public IActionResult EditPersonNotes([FromForm]EditPersonNotesForm form)
+        {
+            ModelState.Clear();
+            var model = new EditPersonNotes(_configuration)
+            {
+                Form = form
+            };
+            model.SaveNotes();
+            return PersonNotes(model.Form.PersonId ?? 0);
+        }
         #endregion
 
         #region Attendances

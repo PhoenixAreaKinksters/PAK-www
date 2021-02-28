@@ -1,0 +1,9 @@
+﻿@using PAK_www.Models.Admin
+@model EditPersonNotesForm
+
+
+@Html.HiddenFor(m => m.PersonId)
+<div class="form-group">
+    @Html.LabelFor(m => m.Notes)
+    @Html.TextAreaFor(m => m.Notes)
+</div>
