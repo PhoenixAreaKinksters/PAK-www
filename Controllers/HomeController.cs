@@ -37,6 +37,11 @@ namespace PAK_www.Controllers
             return View();
         }
 
+        public IActionResult Calendar()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
