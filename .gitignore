@@ -1,4 +1,6 @@
 .vs
+.vscode
+Backup
 bin
 obj
 .vs/PAK-www/v16/.suo
