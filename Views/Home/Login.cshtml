@@ -1,9 +1,21 @@
 ﻿<html>
 <body>
-    Welcome to PAK
-    <br />
-    Please Sign In
-    <br /><br />
-    @await Html.PartialAsync("Partial/LoginForm.cshtml")
+    <div class="container-fluid">
+        <div class="row">
+            <div class="column">
+                <h2>Welcome to PAK</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                Please sign in:
+            </div>
+        </div>
+        <div class="row">
+            <div class="column col-lg-6">
+                @await Html.PartialAsync("Partial/LoginForm.cshtml")
+            </div>
+        </div>
+    </div>
 </body>
 </html>

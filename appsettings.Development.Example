@@ -1,0 +1,19 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "PAK": "Server=domain.example;Database=database;uid=user;pwd=NotRealGetFromAdmin;"
+  },
+  "ApiKeys": {
+    "Google": "CHANGEME"
+  },
+  "Calendars": {
+    "Events": "CHANGEME"
+  }
+}

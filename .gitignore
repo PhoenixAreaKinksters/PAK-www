@@ -6,3 +6,4 @@ obj
 .vs/PAK-www/v16/.suo
 obj/Debug/netcoreapp3.1/PAK-www.assets.cache
 appsettings.json
+appsettings.Development.json
